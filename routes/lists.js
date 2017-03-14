@@ -23,5 +23,22 @@ router.get('/:email', function(req, res, next) {
 
 
 //Display a particular lists's task
+router.get('/:email/:listName', function (req, res, next) {
+  knex
+  .select('list.name', 'list_task.list_id', 'list_task.task_id', 'list_task.id', 'task.todo')
+  .table('list')
+  .innerJoin('list_task', 'list_task.list_id', 'list.id')
+  .innerJoin('task', 'task.id', 'list_task.task_id')
+  .where({name: req.params.listName})
+  .returning('*')
+  .then(function (listedTasks) {
+    console.log(listedTasks);
+    console.log(listedTasks.todo);
+    res.render('list', {
+      listName: req.params.listName,
+      listedTasks: listedTasks,
+    })
+  })
+});
 
 module.exports = router;
