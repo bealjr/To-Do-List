@@ -1,12 +1,119 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  font: 14px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*004-Backgrounds*/
+  background: #004FF9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #004FF9, #FFF94C);
+  background: -o-linear-gradient(right, #004FF9, #FFF94C);
+  background: linear-gradient(to left, #004FF9, #FFF94C); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#container {
+  /*001-Box Model*/
+  min-height: 100%;
+  /*002-Positioning*/
+  position: relative;
+  /*003-Typography*/
+  /*004-Backgrounds*/
+}
+
+#headerDiv, #footerDiv {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  /*004-Backgrounds*/
+  background-color: #2980b9;
+}
+
+#footerDiv {
+  /*001-Box Model*/
+  width: 100%;
+  /*002-Positioning*/
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /*003-Typography*/
+  /*004-Backgrounds*/
+}
+
+.headerthirds {
+  width: 33%;
+  display: inline-block;
+  margin: auto;
+  border: 2px solid black;
+}
+
+header {
+  /*001-Box Model*/
+  height: 150px;
+  max-width: 1400px;
+  /*002-Positioning*/
+  margin: auto;
+  /*003-Typography*/
+  /*line-height: 150px;*/
+  text-align: center;
+  /*004-Backgrounds*/
+  background-color: #2980b9;
+}
+
+#logo {
+  /*001-Box Model*/
+  width: 100%;
+  margin: auto;
+  /*002-Positioning*/
+  display: inline-block;
+  /*003-Typography*/
+  text-align: center;
+  /*004-Backgrounds*/
+}
+
+header h1 {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  color: white;
+  font-size: 32px;
+  /*004-Backgrounds*/
+}
+
+nav {
+  /*001-Box Model*/
+  width: 60%;
+  /*002-Positioning*/
+  float: right;
+ /*003-Typography*/
+  /*004-Backgrounds*/
+}
+
+main {
+  /*001-Box Model*/
+  max-width: 1400px;
+  padding-bottom: 100px;
+  /*002-Positioning*/
+  margin: auto;
+  /*003-Typography*/
+  /*004-Backgrounds*/
+}
+
+footer {
+  /*001-Box Model*/
+  height: 100px;
+  max-width: 1400px;
+  /*002-Positioning*/
+  margin: auto;
+  /*003-Typography*/
+  /*004-Backgrounds*/
+  background-color: #2980b9;
 }
 
 a {
   color: #00B7FF;
 }
 
-.classOfLists {
-  background-color: yellow;
-}
+
+/*001-Box Model*/
+/*002-Positioning*/
+/*003-Typography*/
+/*004-Backgrounds*/
