@@ -39,10 +39,16 @@ body {
 }
 
 .headerthirds {
+  /*001-Box Model*/
   width: 33%;
-  display: inline-block;
   margin: auto;
-  border: 2px solid black;
+  height: 150px;
+  /*002-Positioning*/
+  display: inline-block;
+  vertical-align: middle;
+  /*003-Typography*/
+  line-height: 150px;
+  /*004-Backgrounds*/
 }
 
 header {
@@ -56,17 +62,6 @@ header {
   text-align: center;
   /*004-Backgrounds*/
   background-color: #2980b9;
-}
-
-#logo {
-  /*001-Box Model*/
-  width: 100%;
-  margin: auto;
-  /*002-Positioning*/
-  display: inline-block;
-  /*003-Typography*/
-  text-align: center;
-  /*004-Backgrounds*/
 }
 
 header h1 {
@@ -106,10 +101,6 @@ footer {
   /*003-Typography*/
   /*004-Backgrounds*/
   background-color: #2980b9;
-}
-
-a {
-  color: #00B7FF;
 }
 
 
