@@ -6,8 +6,40 @@ var knex = require('../db/knex');
 //Log In POST
 router.post('/login', function(req, res, next) {
   console.log(req.body);
-  res.render('lists');
-});
+
+  knex('users')
+  .select()
+  .where('email', req.body.email)
+  .returning('*')
+  .then(function (existingUsers) {
+    var user = existingUsers[0];
+    if (existingUsers.length === 0) {
+      console.log(existingUser);
+      res.render('error', {
+        message: "User does not exist",
+        status: 400,
+        description: "Sorry but the email you entered does not exist in the database. Please try to log in with a different email or try to sign up."
+      });
+    } else {
+      if (bcrypt.compareSync(req.body.password, user.hashed_password) === true) {
+        console.log("Hoorah!!!");
+        req.session.user = req.body.email;
+        req.session.cookie.maxAge = 24 * 60 * 60 * 10;
+        res.redirect(`/lists/${user.email}`)
+      }
+      else {
+        console.log("POOP!");
+        res.render('error', {
+          message: "Incorrect Login Credentials",
+          status: 400,
+          description: "You have entered incorrect login credentials"
+        })
+      }
+
+
+    }
+  });
+}); //End of router.post
 
 
 //Sing up POST
