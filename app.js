@@ -4,9 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var expressSession = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var lists = require('./routes/lists');
+
 
 var app = express();
 
@@ -20,10 +22,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(expressSession({
+  secret: 'poop',
+  saveUninitialized: true, //Saving the session to a permanent storage like a database. That allows persistent login even when the server goes down. Sp when the server comes back up, the users are still logged in.
+  resave: true//Even if nothing changed, go ahead and save it again (when true)
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/lists', lists);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
