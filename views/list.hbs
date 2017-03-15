@@ -7,3 +7,23 @@ Congratulations you are in the list.hbs
   {{todo}}
   {{/each}}
 </div>
+
+
+<section class="sectionLists" id="sectionNewList">
+  <h1>{{listName}}<i class="fa fa-plus"></i></h1>
+  <!-- <input type="text" name="title" value="{{listName}}" placeholder="{{listName}}" required><br> -->
+  <form class="" action="/lists/addTask" method="post">
+    <input type="text" name="list_id" value="{{list_id}}" hidden="hidden">
+    <input type="text" name="email" value="{{user}}" hidden="hidden">
+    <input type="text" name="listName" value="{{listName}}" hidden="hidden">
+    <input type="text" name="todo" placeholder= "Add New Todo">
+    <button type="submit" name="buttonAddTask" id="buttonAddTask">submit</button>
+  </form>
+  <ul>
+    {{#each listedTasks}}
+    <li><span><i class="fa fa-trash"></i></span>{{todo}}</li>
+    {{/each}}
+  </ul>
+</section>
+
+<script type="text/javascript" src="/js/todos.js"></script>

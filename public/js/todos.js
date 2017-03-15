@@ -1,7 +1,7 @@
 //Check off specific To dos by clicking
 "use strict";
 
-$("ul").on("click", "li", function(){
+$("#sectionNewList ul").on("click", "li", function(){
 	$(this).toggleClass("completed");
 });
 
@@ -16,7 +16,7 @@ $("input[type = 'text']").keypress(function(){
 	if(event.which === 13){
 		 let todoText = $(this).val();
 		 $(this).val("");
-		 $("#sectionNewList ul").append("<li><span><i class= 'fa fa-trash'></i></span>" + todoText + "</li>");
+		 $(".sectionLists ul").append("<li><span><i class= 'fa fa-trash'></i></span>" + todoText + "</li>");
 	}
 });
 

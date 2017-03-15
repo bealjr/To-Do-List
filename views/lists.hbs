@@ -1,8 +1,17 @@
 We are in the users lists page
 
-{{email}}
 
-{{#each listTitles}}
-<a href="/lists/{{email}}/{{name}}">{{name}}</a>
-<p>{{name}}</p>
-{{/each}}
+<section class="sectionLists">
+  <h1>My lists<i class='fa fa-plus' title="New List"></i></h1>
+  <input type="text" placeholder= "Add New List">
+  <ul>
+    {{#each listTitles}}
+    <li>
+      <span><i class="fa fa-trash"></i></span>
+      <a href="/lists/{{email}}/{{name}}">{{name}}</a>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+
+<script type="text/javascript" src="/js/todos.js"></script>

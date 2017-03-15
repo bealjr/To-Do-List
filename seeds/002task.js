@@ -5,9 +5,18 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('task').insert([
-        {todo: "take shower"},
-        {todo: "feed dog"},
-        {todo: "mow lawn"}
+        {
+          todo: "take shower",
+          completed: false
+      },
+        {
+          todo: "feed dog",
+          completed: true
+        },
+        {
+          todo: "mow lawn",
+          completed: false
+        }
       ]).returning('id');
     });
 };
