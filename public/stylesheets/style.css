@@ -175,12 +175,6 @@ footer {
   background-color: #2980b9;
 }
 
-
-/*001-Box Model*/
-/*002-Positioning*/
-/*003-Typography*/
-/*004-Backgrounds*/
-
 h1 {
   /*001-Box Model*/
   /*002-Positioning*/
@@ -239,4 +233,129 @@ a {
 
 a h1:hover {
   color: #1c567d;
+}
+
+
+/*
+-------------------------------
+NEW LIST SECTION
+-------------------------------
+*/
+
+#sectionNewList {
+  /*001-Box Model*/
+  width: 360px;
+  margin: auto;
+  /*002-Positioning*/
+  /*003-Typography*/
+  /*004-Backgrounds*/
+  box-shadow: 0 0 3px rgba(0,0,0, 0.1);
+  background: #f7f7f7;
+}
+
+#sectionNewList h1 {
+  /*001-Box Model*/
+  margin: 0;
+  padding: 10px 20px;
+  /*002-Positioning*/
+  /*003-Typography*/
+  font-size: 24px;
+  font-weight: normal;
+  text-transform: uppercase;
+  /*004-Backgrounds*/
+	background: #2980b9;
+}
+
+#sectionNewList ul {
+  text-align: left;
+/*list-style: none;
+margin: 0;
+padding: 0;*/
+}
+
+#sectionNewList li {
+  /*001-Box Model*/
+  height: 40px;
+  /*002-Positioning*/
+  /*003-Typography*/
+  line-height: 40px;
+  color: #666;
+  /*004-Backgrounds*/
+	background: #fff;
+}
+
+#sectionNewList li:nth-child(2n){
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  /*004-Backgrounds*/
+	background: #f7f7f7;
+}
+
+#sectionNewList span {
+  /*001-Box Model*/
+  height: 40px;
+  margin-right: 20px;
+  width: 0;
+  /*002-Positioning*/
+  display: inline-block;
+  /*003-Typography*/
+  text-align: center;
+  color: white;
+  /*004-Backgrounds*/
+	background: #e74c3c;
+	opacity: 0;
+  /*005-Animation*/
+  transition: 0.2s linear;
+}
+
+#sectionNewList li:hover span {
+  /*001-Box Model*/
+  width: 40px;
+  /*002-Positioning*/
+  /*003-Typography*/
+  /*004-Backgrounds*/
+	opacity: 1.0;
+
+}
+
+#sectionNewList input {
+  /*001-Box Model*/
+  width: 100%;
+  padding: 13px 13px 13px 20px;
+  border: 3px solid rgba(0,0,0,0);
+  /*002-Positioning*/
+  /*003-Typography*/
+  font-size: 18px;
+  color: #2980b9;
+  /*004-Backgrounds*/
+  background-color: #f7f7f7;
+	/*box-sizing: border-box;*/
+}
+
+#sectionNewList input:focus{
+  /*001-Box Model*/
+  /*002-Positioning*/
+  border: 3px solid #2980b9;
+  /*003-Typography*/
+  /*004-Backgrounds*/
+	background: white;
+	outline: none;
+}
+
+.fa-plus{
+  /*001-Box Model*/
+  /*002-Positioning*/
+  float: right;
+  /*003-Typography*/
+  /*004-Backgrounds*/
+}
+
+.completed {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  color: gray;
+  text-decoration: line-through;
+  /*004-Backgrounds*/
 }

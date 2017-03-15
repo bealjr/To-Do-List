@@ -99,7 +99,7 @@ router.post('/signup', function(req, res, next) {
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: 'Jeremy\'s lists',
-    user: req.session.user || "Guest"
+    user: req.session.user || "guest"
   });
 });
 
