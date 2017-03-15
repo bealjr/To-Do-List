@@ -18,7 +18,8 @@ router.post('/login', function(req, res, next) {
       res.render('error', {
         message: "User does not exist",
         status: 400,
-        description: "Sorry but the email you entered does not exist in the database. Please try to log in with a different email or try to sign up."
+        description: "Sorry but the email you entered does not exist in the database. Please try to log in with a different email or try to sign up.",
+        user: req.session.user || "guest"
       });
     } else {
       if (bcrypt.compareSync(req.body.password, user.hashed_password) === true) {
@@ -32,7 +33,8 @@ router.post('/login', function(req, res, next) {
         res.render('error', {
           message: "Incorrect Login Credentials",
           status: 400,
-          description: "You have entered incorrect login credentials"
+          description: "You have entered incorrect login credentials",
+          user: req.session.user || "guest"
         })
       }
 
@@ -57,7 +59,8 @@ router.post('/signup', function(req, res, next) {
       res.render('error', {
         message: "User already exists",
         status: 400,
-        description: "Sorry but the email you entered exists already in the database. Please try siging up with a different email or try to login."
+        description: "Sorry but the email you entered exists already in the database. Please try siging up with a different email or try to login.",
+        user: req.session.user || "guest"
       });
     }
   })
@@ -95,8 +98,8 @@ router.post('/signup', function(req, res, next) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {
-    title: 'Jeremy\'s awesomness',
-    dog: 'Wilson'
+    title: 'Jeremy\'s lists',
+    user: req.session.user || "Guest"
   });
 });
 

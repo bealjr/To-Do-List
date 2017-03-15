@@ -13,19 +13,38 @@
     <div id="headerDiv">
       <header>
         <div class="headerthirds">
-          <div class="">
-
+          <div id="headerFirstThird">
+            <h5>User: <br> {{user}}</h5>
           </div>
         </div>
 
         <div class="headerthirds">
-          <h1>Jeremy's lists</h1>
+          <div id="headerSecondThird">
+            <a href="/">
+              <h1>Jeremy's lists</h1>
+            </a>
+          </div>
         </div>
 
         <div class="headerthirds">
-          <nav>
-            links go here
-          </nav>
+          <div id="headerThirdThird">
+            <nav>
+              <ul>
+                <li>
+                  <a href="/lists/{{user}}">My lists</a>
+                </li>
+                <li>
+                  <a href="#">New list</a>
+                </li>
+                <li>
+                  <a href="#">User settings</a>
+                </li>
+                <li>
+                  <a href="#">Logout</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </header>
     </div>
@@ -40,7 +59,7 @@
 
     <div id="footerDiv">
       <footer>
-        The footer is here
+        <h2>&copy; Jeremy Beal - March 2017</h2>
       </footer>
     </div>
 

@@ -1,17 +1,63 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h2>Welcome to {{title}}</h2>
 
-Login: <br>
-<form class="" action="/login" method="post" id="logInForm">
-  <input type="email" name="email" value="">
-  <input type="password" name="password" value="">
-  <button type="submit" name="logInSubmitButton" id="loginSubmitButton">Login</button>
-</form>
+<section id="sectionLoginSignup">
+  <!-- LOGIN FORM -->
+  <form class="formLoginSignup" action="/login" method="post" id="formLogin">
+    <h3>Login</h3>
+    <table class="tablesLoginSignup">
+      <tbody>
 
-<br>
-Sign Up: <br>
-<form class="" action="/signup" method="post" id="signUpForm">
-  <input type="email" name="email" value="">
-  <input type="password" name="password" value="">
-  <button type="submit" name="logInSubmitButton" id="signupSubmitButton">Sign up</button>
-</form>
+        <tr>
+          <td>Email:</td>
+          <td>
+            <input type="email" name="email" value="">
+          </td>
+        </tr>
+
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input type="password" name="password" value="">
+          </td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <button type="submit" name="logInSubmitButton" id="loginSubmitButton">Login</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+
+  <!-- SIGN UP FORM -->
+  <form class="formLoginSignUp" action="/signup" method="post" id="formSignup">
+    <h3>Sign up</h3>
+    <table class="tablesLoginSignup">
+      <tbody>
+        <tr>
+          <td>Email:</td>
+          <td>
+            <input type="email" name="email" value="">
+          </td>
+        </tr>
+
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input type="password" name="password" value="">
+          </td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <button type="submit" name="logInSubmitButton" id="signupSubmitButton">Sign up</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</section>

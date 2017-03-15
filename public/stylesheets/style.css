@@ -51,6 +51,11 @@ body {
   /*004-Backgrounds*/
 }
 
+#headerFirstThird h5 {
+  line-height: 20px;
+  padding-top: 55px;
+}
+
 header {
   /*001-Box Model*/
   height: 150px;
@@ -64,12 +69,73 @@ header {
   background-color: #2980b9;
 }
 
-header h1 {
+#sectionLoginSignup {
+  /*001-Box Model*/
+  padding: 5px 0;
+  /*002-Positioning*/
+  /*003-Typography*/
+  /*004-Backgrounds*/
+}
+
+#sectionLoginSignup form {
+  /*001-Box Model*/
+  padding-top: 10px;
+  /*002-Positioning*/
+  /*003-Typography*/
+  /*004-Backgrounds*/
+}
+
+#sectionLoginSignup form table {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
+  font-size: 18px;
   color: white;
-  font-size: 32px;
+  /*004-Backgrounds*/
+}
+
+#sectionLoginSignup form input {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  font-size: 18px;
+  /*004-Backgrounds*/
+}
+
+.tablesLoginSignup{
+  /*001-Box Model*/
+  /*002-Positioning*/
+  margin: auto;
+  /*003-Typography*/
+  /*004-Backgrounds*/
+}
+
+button {
+  /*001-Box Model*/
+  border: 2px solid #1c567d;
+  border-radius: 5px;
+  /*002-Positioning*/
+  padding: 5px;
+  /*003-Typography*/
+  font-size: 18px;
+  font-weight: bold;
+  color: #1c567d;
+  /*004-Backgrounds*/
+  background-color: white;
+}
+
+button:hover {
+  background-color: #2980b9;
+  color: white;
+}
+
+.tablesLoginSignup td {
+  /*001-Box Model*/
+  padding: 5px;
+  /*002-Positioning*/
+  vertical-align: bottom;
+  /*003-Typography*/
+  text-align: right;
   /*004-Backgrounds*/
 }
 
@@ -79,16 +145,20 @@ nav {
   /*002-Positioning*/
   float: right;
  /*003-Typography*/
+ font-size: 20px;
+ line-height: 25px;
+ padding: 25px;
   /*004-Backgrounds*/
 }
 
 main {
   /*001-Box Model*/
   max-width: 1400px;
-  padding-bottom: 100px;
+  padding: 10px 0 100px 0;
   /*002-Positioning*/
   margin: auto;
   /*003-Typography*/
+  text-align: center;
   /*004-Backgrounds*/
 }
 
@@ -99,6 +169,8 @@ footer {
   /*002-Positioning*/
   margin: auto;
   /*003-Typography*/
+  text-align: center;
+  line-height: 100px;
   /*004-Backgrounds*/
   background-color: #2980b9;
 }
@@ -108,3 +180,63 @@ footer {
 /*002-Positioning*/
 /*003-Typography*/
 /*004-Backgrounds*/
+
+h1 {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  color: white;
+  font-size: 44px;
+  font-weight: 500;
+  /*004-Backgrounds*/
+}
+
+h2 {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  color: white;
+  font-size: 32px;
+  /*004-Backgrounds*/
+}
+
+h3 {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  /*004-Backgrounds*/
+}
+
+h4 {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  color: white;
+  font-size: 24px;
+  /*004-Backgrounds*/
+}
+
+h5 {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  color: white;
+  font-size: 20px;
+  /*004-Backgrounds*/
+}
+
+a {
+  /*001-Box Model*/
+  /*002-Positioning*/
+  /*003-Typography*/
+  text-decoration: none;
+  color: white;
+  /*004-Backgrounds*/
+}
+
+a h1:hover {
+  color: #1c567d;
+}

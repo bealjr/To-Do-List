@@ -16,7 +16,8 @@ router.get('/:email', function(req, res, next) {
     console.log("A whole bunch of poop", listTitles);
     res.render('lists',{
       listTitles: listTitles,
-      email: listTitles.email
+      email: listTitles.email,
+      user: req.params.email || 'guest'
     })
   })
 });
