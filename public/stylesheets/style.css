@@ -235,6 +235,9 @@ a h1:hover {
   color: #1c567d;
 }
 
+#buttonAddTask {
+  display: none;
+}
 
 /*
 -------------------------------
