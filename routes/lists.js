@@ -4,6 +4,45 @@ var knex = require('../db/knex');
 var bodyParser = require('body-parser');
 
 
+/*
+--------------------------
+ROUTES FOR LISTS
+--------------------------
+*/
+
+/*Display all the lists of the user*/
+router.get('/:email', function(req, res, next) {
+  console.log(req.params);
+  var userEmail = req.params.email;
+  knex
+  .select('list.name', 'list.id', 'users.id', 'users.email')
+  .table('list')
+  .innerJoin('users', 'list.user_id', 'users.id')
+  .where({email: userEmail})
+  .returning('*')
+  .then(function (listTitles) {
+    console.log("A whole bunch of poop", listTitles);
+    res.render('lists',{
+      listTitles: listTitles,
+      email: listTitles.email,
+      user: req.params.email || 'guest'
+    })
+  })
+});
+
+
+
+
+
+
+
+
+/*
+--------------------------
+ROUTES FOR TASKS
+--------------------------
+*/
+
 //POST A NEW TASK IN LIST
 router.post('/addTask', function(req, res, next) {
 
@@ -54,40 +93,6 @@ router.post('/addTask', function(req, res, next) {
   });
 });
 
-
-//DELETE THE TASK
-router.delete('/deleteTask', function (req, res, next) {
-  console.log("This is the req.body from the deleteTask", req.body);
-
-  knex('list_task')
-  .where('task_id', req.body.task_id)
-  .del()
-  .then(function () {
-    console.log("the entry was deleted");
-  })
-})
-
-/*Display all the lists of the user*/
-router.get('/:email', function(req, res, next) {
-  console.log(req.params);
-  var userEmail = req.params.email;
-  knex
-  .select('list.name', 'list.id', 'users.id', 'users.email')
-  .table('list')
-  .innerJoin('users', 'list.user_id', 'users.id')
-  .where({email: userEmail})
-  .returning('*')
-  .then(function (listTitles) {
-    console.log("A whole bunch of poop", listTitles);
-    res.render('lists',{
-      listTitles: listTitles,
-      email: listTitles.email,
-      user: req.params.email || 'guest'
-    })
-  })
-});
-
-
 //UPDATE THE STATUS OF A TASK
 router.put('/updateTask', function(req, res, next){
   console.log(req.body);
@@ -118,9 +123,64 @@ router.put('/updateTask', function(req, res, next){
     }
   })
 });
+var listIdFromListTasks;
+//DELETE THE TASK
+router.delete('/deleteTask', function (req, res, next) {
+  console.log("This is the req.body from the deleteTask", req.body);
+  console.log(req.params);
+
+  knex('list_task')
+  .where('task_id', req.body.task_id)
+  .returning('*')
+  .then(function (listTasks) {
+    var listTask = listTasks[0];
+    console.log("ListTask is here", listTask);
+    listIdFromListTasks = listTask.list_id;
+    // return listIdFromListTasks;
+  })
+  .then(function (/*listIdFromListTasks*/) {
+    knex('list_task')
+    .where('task_id', req.body.task_id)
+    .del()
+    // return(listIdFromListTasks);
+  })
+  .then(function (/*listIdFromListTasks*/) {
+    // console.log(listIdFromListTasks);
+    knex('task')
+    .where('id', req.body.task_id)
+    .del()
+    // .returning(listIdFromListTasks)
+    .then(function (listIdFromListTasks) {
+      console.log("***********************", listIdFromListTasks);
+      knex
+      .select('list.name', 'list_task.list_id', 'list_task.task_id', 'list_task.id', 'task.todo', 'users.email', 'task.completed')
+      .table('list')
+      .innerJoin('list_task', 'list_task.list_id', 'list.id')
+      .innerJoin('task', 'task.id', 'list_task.task_id')
+      .innerJoin('users', 'users.id', 'list.user_id')
+      .where({'list.id': listIdFromListTasks})
+      .returning('*')
+      .then(function (listedTasks) {
+        console.log(listedTasks);
+        console.log(listedTasks.todo);
+        res.render('list', {
+          listName: req.params.listName,
+          listedTasks: listedTasks,
+          list_id: listedTasks[0].list_id,
+          user: req.session.user || 'guest'
+        });
+      });
+      console.log("the entry was deleted");
+    })
+  })
 
 
-//Display a particular lists's task
+})
+
+
+
+
+//DISPLAY A PARTICULAR LIST'S TASK
 router.get('/:email/:listName', function (req, res, next) {
   knex
   .select('list.name', 'list_task.list_id', 'list_task.task_id', 'list_task.id', 'task.todo', 'users.email', 'task.completed')

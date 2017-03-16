@@ -3,6 +3,14 @@
 
 var buttonAddTask = document.getElementById("buttonAddTask")
 
+$(window).on('load', function() {
+	$( ".spanCompletedTask" ).each(function( index ) {
+		if ($( this ).text() === 'true') {
+			$(this).parent().addClass("completed");
+		}
+	});
+});
+
 $("#sectionNewList ul").on("click", "li", function(){
 	$(this).toggleClass("completed");
 });

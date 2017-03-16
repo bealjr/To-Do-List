@@ -1,12 +1,13 @@
-<!-- Congratulations you are in the list.hbs
+Congratulations you are in the list.hbs
 
 
 <div class="classOfLists">
   {{listName}} <br>
   {{#each listedTasks}}
-  {{todo}}
+
+  {{todo}} {{completed}}
   {{/each}}
-</div> -->
+</div>
 
 
 <section class="sectionLists" id="sectionNewList">
@@ -22,15 +23,16 @@
   <ul>
     {{#each listedTasks}}
     <li>
-      <span><i class="fa fa-trash"></i></span>{{todo}}
+      <span><i class="fa fa-trash"></i></span>{{todo}} {{listName}}
+      <p class="spanCompletedTask" hidden>{{completed}}</p>
       <form class="hiddenTasks" action="/lists/deleteTask?_method=DELETE" method="post">
         <input type="text" name="task_id" value="{{task_id}}" hidden="hidden">
         <button type="submit" name="deleteButton" class="deleteButton" hidden="hidden"></button>
       </form>
 
-      <form class="hiddenTasks" action="/lists/updateTask?_method=PUT" method="post">
-        <input type="text" name="id" value="{{id}}">
-        <button type="submit" name="updateButton" class="updateButton"></button>
+      <form class="hiddenTasksUpdate" action="/lists/updateTask?_method=PUT" method="post">
+        <input type="text" name="id" value="{{id}}" hidden="hidden">
+        <button type="submit" name="updateButton" class="updateButton" hidden="hidden"></button>
       </form>
     </li>
     {{/each}}

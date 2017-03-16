@@ -6,6 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var methodOverride = require('method-override');
+var hbs = require("hbs");
+// hbs.registerHelper("unless", function() {
+//
+// })
 
 
 var routes = require('./routes/index');

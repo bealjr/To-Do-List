@@ -239,6 +239,14 @@ a h1:hover {
   display: none;
 }
 
+.spanCompletedTask important{
+  display: none;
+}
+
+.spanCompletedTask:hover important{
+  display: none;
+}
+
 /*
 -------------------------------
 NEW LIST SECTION
