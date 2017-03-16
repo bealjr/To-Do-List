@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
+var methodOverride = require('method-override');
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var lists = require('./routes/lists');
@@ -29,6 +32,7 @@ app.use(expressSession({
   resave: true//Even if nothing changed, go ahead and save it again (when true)
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 app.use('/', routes);
 app.use('/users', users);

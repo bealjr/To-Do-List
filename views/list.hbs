@@ -1,4 +1,4 @@
-Congratulations you are in the list.hbs
+<!-- Congratulations you are in the list.hbs
 
 
 <div class="classOfLists">
@@ -6,7 +6,7 @@ Congratulations you are in the list.hbs
   {{#each listedTasks}}
   {{todo}}
   {{/each}}
-</div>
+</div> -->
 
 
 <section class="sectionLists" id="sectionNewList">
@@ -16,12 +16,23 @@ Congratulations you are in the list.hbs
     <input type="text" name="list_id" value="{{list_id}}" hidden="hidden">
     <input type="text" name="email" value="{{user}}" hidden="hidden">
     <input type="text" name="listName" value="{{listName}}" hidden="hidden">
-    <input type="text" name="todo" placeholder= "Add New Todo">
+    <input type="text" name="todo" placeholder= "Add New Todo" id="inputAddToDo">
     <button type="submit" name="buttonAddTask" id="buttonAddTask">submit</button>
   </form>
   <ul>
     {{#each listedTasks}}
-    <li><span><i class="fa fa-trash"></i></span>{{todo}}</li>
+    <li>
+      <span><i class="fa fa-trash"></i></span>{{todo}}
+      <form class="hiddenTasks" action="/lists/deleteTask?_method=DELETE" method="post">
+        <input type="text" name="task_id" value="{{task_id}}" hidden="hidden">
+        <button type="submit" name="deleteButton" class="deleteButton" hidden="hidden"></button>
+      </form>
+
+      <form class="hiddenTasks" action="/lists/updateTask?_method=PUT" method="post">
+        <input type="text" name="id" value="{{id}}">
+        <button type="submit" name="updateButton" class="updateButton"></button>
+      </form>
+    </li>
     {{/each}}
   </ul>
 </section>

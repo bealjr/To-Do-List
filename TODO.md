@@ -9,3 +9,11 @@
 * [] do the POST in the server so we can add the task in the database table
 * [] add event listener so that the submit button is clicked when we hit enter
 * [] hide the submit button
+* [X] migration for making the task entries unique
+* [X] update list_task table in order to have both the list id and the task id
+* [X] add list id and task id in hidden inputs of the form
+* [] UPDATE in tasks list (boolean completed)
+* [] DELETE in tasks list
+* [] POST in lists
+* [] DELETE in lists
+* [] UPDATE in lists

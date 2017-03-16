@@ -8,6 +8,7 @@ $("#sectionNewList ul").on("click", "li", function(){
 });
 
 $("ul").on("click", "span", function(event){
+	clickInputInsert($(this).parent().children(".hiddenTasks").children("button"));
 	$(this).parent().fadeOut(500, function(){
 		$(this).remove();
 	});
@@ -22,17 +23,16 @@ $("ul").on("click", "span", function(event){
 // 	}
 // });
 
+
+//Submit button for adding a new task
 $("input[type = 'text']").keypress(function(){
 	if(event.which === 13){
 	clickInputInsert(buttonAddTask);
-	// 	 let todoText = $(this).val();
-	// 	 $(this).val("");
-	// 	 $(".sectionLists ul").append("<li><span><i class= 'fa fa-trash'></i></span>" + todoText + "</li>");
 	}
 });
 
 $(".fa-plus").click(function(){
-	$("input[type = 'text']").fadeToggle();
+	$("#inputAddToDo").fadeToggle();
 });
 
 

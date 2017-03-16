@@ -31,6 +31,7 @@ router.post('/addTask', function(req, res, next) {
     .insert(listTask)
     .returning('*')
     .then(function(){
+      console.log("the task was added");
       knex
       .select('list.name', 'list_task.list_id', 'list_task.task_id', 'list_task.id', 'task.todo', 'users.email', 'task.completed')
       .table('list')
@@ -40,16 +41,31 @@ router.post('/addTask', function(req, res, next) {
       .where({name: listName})
       .returning('*')
       .then(function (listedTasks) {
-        // console.log(listedTasks);
+        console.log("Listed tasks from POST", listedTasks);
+        console.log(listedTasks[0].list_id);
         res.render('list', {
           listName: listName,
           listedTasks: listedTasks,
+          list_id: listedTasks[0].list_id,
           user: req.session.user
         });
       });
     });
   });
 });
+
+
+//DELETE THE TASK
+router.delete('/deleteTask', function (req, res, next) {
+  console.log("This is the req.body from the deleteTask", req.body);
+
+  knex('list_task')
+  .where('task_id', req.body.task_id)
+  .del()
+  .then(function () {
+    console.log("the entry was deleted");
+  })
+})
 
 /*Display all the lists of the user*/
 router.get('/:email', function(req, res, next) {
@@ -68,6 +84,38 @@ router.get('/:email', function(req, res, next) {
       email: listTitles.email,
       user: req.params.email || 'guest'
     })
+  })
+});
+
+
+//UPDATE THE STATUS OF A TASK
+router.put('/updateTask', function(req, res, next){
+  console.log(req.body);
+  knex('task')
+  .where({id: req.body.id})
+  .returning('*')
+  .then(function (tasks) {
+    console.log("This comes from the put", tasks);
+    var task = tasks[0];
+    if (task.completed === false) {
+      console.log("in the if statement");
+      knex('task')
+      .where({id: task.id})
+      .update({completed: true})
+      .returning('*')
+      .then(function (completedTasks) {
+        console.log(completedTasks);
+      })
+    }
+    else {
+      knex('task')
+      .where({id: task.id})
+      .update({completed: false})
+      .returning('*')
+      .then(function (completedTasks) {
+        console.log(completedTasks);
+      })
+    }
   })
 });
 
