@@ -2,7 +2,8 @@ body {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
-  font: 14px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: white;
   /*004-Backgrounds*/
   background: #004FF9; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #004FF9, #FFF94C);
@@ -77,7 +78,7 @@ header {
   /*004-Backgrounds*/
 }
 
-#sectionLoginSignup form {
+form {
   /*001-Box Model*/
   padding-top: 10px;
   /*002-Positioning*/
@@ -85,7 +86,7 @@ header {
   /*004-Backgrounds*/
 }
 
-#sectionLoginSignup form table {
+form table {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
@@ -94,7 +95,7 @@ header {
   /*004-Backgrounds*/
 }
 
-#sectionLoginSignup form input {
+form input {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
@@ -102,7 +103,7 @@ header {
   /*004-Backgrounds*/
 }
 
-.tablesLoginSignup{
+.tablesLoginSignup, #tableUpdateAccount {
   /*001-Box Model*/
   /*002-Positioning*/
   margin: auto;
@@ -129,7 +130,7 @@ button:hover {
   color: white;
 }
 
-.tablesLoginSignup td {
+table td {
   /*001-Box Model*/
   padding: 5px;
   /*002-Positioning*/
@@ -235,7 +236,7 @@ a h1:hover {
   color: #1c567d;
 }
 
-#buttonAddTask {
+#buttonAddTask, #buttonLogout {
   display: none;
 }
 

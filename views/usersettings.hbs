@@ -1,0 +1,43 @@
+<section>
+  <h2>Account settings</h2>
+  <p>
+    Your current account settings are:
+  </p>
+  <p>email: {{user}}</p>
+  <p>password: hidden</p>
+
+  <h3>Update account settings</h3>
+  <form class="" id="formUpdateAccount" action="/usersettings/updateaccount?_method=PUT" method="post">
+    <table id="tableUpdateAccount">
+      <tbody>
+        <tr>
+          <td>New email:</td>
+          <td>
+            <input type="email" name="email" value="" placeholder="update your email">
+          </td>
+        </tr>
+
+        <tr>
+          <td>Old password (required):</td>
+          <td>
+            <input type="password" name="oldPassword" value="" placeholder="type your old password">
+          </td>
+        </tr>
+        <tr>
+          <td>New password:</td>
+          <td>
+            <input type="password" name="newPassword" value="" placeholder="type your new password">
+          </td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <button type="submit" name="buttonUpdateAccount" id="buttonUpdateAccount">Update</button>
+            <button type="button" name="buttonCancelUpdateAccount">Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</section>

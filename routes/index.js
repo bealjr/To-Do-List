@@ -14,7 +14,7 @@ router.post('/login', function(req, res, next) {
   .then(function (existingUsers) {
     var user = existingUsers[0];
     if (existingUsers.length === 0) {
-      console.log(existingUser);
+      console.log(user);
       res.render('error', {
         message: "User does not exist",
         status: 400,
@@ -90,7 +90,20 @@ router.post('/signup', function(req, res, next) {
     })
   })
 
-  // res.render("lists");
+});
+
+//LOGOUT BUTTON
+router.get('/logout', (req, res, next) => {
+  console.log("LOGOUT: req session before logout");
+  console.log(req.session);
+  req.session.destroy(function (err) {
+      res.render('index', {
+        title: 'Jeremy\'s lists',
+        user: "guest"
+      });
+  });
+  console.log("LOGOUT: req session after logout");
+  console.log(req.session);
 });
 
 
