@@ -1,10 +1,4 @@
 <section>
-  <h2>Account settings</h2>
-  <p>
-    Your current account settings are:
-  </p>
-  <p>email: {{user}}</p>
-  <p>password: hidden</p>
 
   <h3>Update account settings</h3>
   <form class="" id="formUpdateAccount" action="/usersettings/updateaccount?_method=PUT" method="post">
@@ -33,11 +27,29 @@
         <tr>
           <td>&nbsp;</td>
           <td>
-            <button type="submit" name="buttonUpdateAccount" id="buttonUpdateAccount">Update</button>
-            <button type="button" name="buttonCancelUpdateAccount">Cancel</button>
+            <button type="submit" name="buttonUpdateAccount" id="buttonUpdateAccount" title="Update account info">Update</button>
+            <a href="/lists/{{user}}">
+              <button type="button" id="buttonCancelAccountUpdates" title="Cancel your changes">Cancel</button>
+            </a>
           </td>
         </tr>
       </tbody>
     </table>
   </form>
+
+  <h3>Delete account</h3>
+  <button type="button" name="buttonDeleteAccountConfirm" id="buttonDeleteAccountConfirm" onclick="confirmDeletion()">DELETE</button>
+  <form class="" action="/usersettings/deleteaccount?_method=DELETE" method="post">
+    <button type="submit" name="buttonDeleteAccount" id="buttonDeleteAccount">DELETE</button>
+  </form>
 </section>
+
+<script type="text/javascript">
+  var buttonDeleteAccount = document.getElementById('buttonDeleteAccount');
+
+  function confirmDeletion() {
+    if (confirm("Are you sure you want to delete your account? All your lists and settings will be lost") === true) {
+      buttonDeleteAccount.click()
+    }
+  }
+</script>

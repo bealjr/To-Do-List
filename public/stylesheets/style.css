@@ -236,7 +236,7 @@ a h1:hover {
   color: #1c567d;
 }
 
-#buttonAddTask, #buttonLogout {
+#buttonAddTask, #buttonLogout, #buttonDeleteAccount {
   display: none;
 }
 
