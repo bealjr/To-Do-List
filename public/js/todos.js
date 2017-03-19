@@ -3,18 +3,29 @@
 
 var buttonAddTask = document.getElementById("buttonAddTask")
 
+
+//ACTIVATE THE SUBMIT BUTTON FOR ADDING A NEW LIST OR NEW TASK IN THE DATABASE ROUTER.POST
+$("input[type = 'text']").keypress(function(){
+	if(event.which === 13 && $(this).text().trim().lenght > 0){
+		clickInputInsert(buttonAddTask);
+	}
+});
+
 $(window).on('load', function() {
-	$( ".spanCompletedTask" ).each(function( index ) {
-		if ($( this ).text() === 'true') {
+	//CROSS OVER THE TASKS THAT ARE COMPLETED ON THE LOAD OF THE PAGE ROUTER.PUT
+	$(".spanCompletedTask").each(function( index ) {
+		if ($(this).text() === 'true') {
 			$(this).parent().addClass("completed");
 		}
 	});
 });
 
+//TOGGLE BETWEEN COMPLETE AND INCOMPLETE TASK BY CROSSING IT OVER ROUTER.PUT
 $("#sectionNewList ul").on("click", "li", function(){
 	$(this).toggleClass("completed");
 });
 
+//ACTIVATE THE SUBMIT BUTTON FOR REMOVING A TASK IN THE DATABASE ROUTER.DELETE
 $("ul").on("click", "span", function(event){
 	clickInputInsert($(this).parent().children(".hiddenTasks").children("button"));
 	$(this).parent().fadeOut(500, function(){
@@ -23,27 +34,13 @@ $("ul").on("click", "span", function(event){
 	event.stopPropagation();
 });
 
-// $("input[type = 'text']").keypress(function(){
-// 	if(event.which === 13){
-// 		 let todoText = $(this).val();
-// 		 $(this).val("");
-// 		 $(".sectionLists ul").append("<li><span><i class= 'fa fa-trash'></i></span>" + todoText + "</li>");
-// 	}
-// });
-
-
-//Submit button for adding a new task
-$("input[type = 'text']").keypress(function(){
-	if(event.which === 13){
-	clickInputInsert(buttonAddTask);
-	}
-});
-
+//FADE PLUS ICON ON CLICK
 $(".fa-plus").click(function(){
 	$("#inputAddToDo").fadeToggle();
 });
 
 
+//FUNCTIONS
 //ACTIVATE INPUT TYPE=FILE TAGS BY CLICKING AT DIFFERENT BUTTONS
 function clickInputInsert(inputTag){
   inputTag.click();

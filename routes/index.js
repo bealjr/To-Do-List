@@ -26,7 +26,19 @@ router.post('/login', function(req, res, next) {
         console.log("Hoorah!!!");
         req.session.user = req.body.email;
         req.session.cookie.maxAge = 24 * 60 * 60 * 10;
-        res.redirect(`/lists/${user.email}`)
+        knex
+        .select('list.name', 'list.id', 'users.id', 'users.email')
+        .table('list')
+        .innerJoin('users', 'list.user_id', 'users.id')
+        .where({email: req.session.user})
+        .returning('*')
+        .then(function (listTitles) {
+          res.render('lists',{
+            listTitles: listTitles,
+            email: listTitles.email,
+            user: req.session.user || 'guest'
+          })
+        })
       }
       else {
         console.log("POOP!");
@@ -86,7 +98,9 @@ router.post('/signup', function(req, res, next) {
       var newUserEmail = newUserEmails[0];
       req.session.user = newUserEmail;
       req.session.cookie.maxAge = 24 * 60 * 60 * 10;
-      res.redirect(`/lists/${newUserEmail}`);
+      res.render('lists', {
+        user: req.session.user
+      });
     })
   })
 

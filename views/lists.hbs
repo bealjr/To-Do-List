@@ -3,12 +3,19 @@ We are in the users lists page
 
 <section class="sectionLists">
   <h1>My lists<i class='fa fa-plus' title="New List"></i></h1>
-  <input type="text" placeholder= "Add New List">
+  <form class="" action="/lists/addList" method="post">
+    <input type="text" name="inputAddList" placeholder= "Add new list" id="inputAddListTask">
+    <button type="submit" name="buttonAddList" id="buttonAddList" hidden>submit</button>
+  </form>
   <ul>
     {{#each listTitles}}
     <li>
       <span><i class="fa fa-trash"></i></span>
       <a href="/lists/{{email}}/{{name}}">{{name}}</a>
+      <form class="hiddenTasks" action="/lists/deleteList?_method=DELETE" method="post">
+        <input type="text" name="inputDeleteListName" value="{{name}}" hidden>
+        <button type="submit" name="buttonDeleteList" class="deleteButton" id="buttonDeleteList" hidden>Delete</button>
+      </form>
     </li>
     {{/each}}
   </ul>
