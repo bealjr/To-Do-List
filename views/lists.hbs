@@ -10,8 +10,8 @@ We are in the users lists page
   <ul>
     {{#each listTitles}}
     <li>
-      <span class="span-trash"><i class="fa fa-trash" title="Delete list"></i></span>
-      <span class="span-pencil"><i class="fa fa-pencil" aria-hidden="true" title="Edit list name"></i></span>
+      <span class="span-trash hoverSpan"><i class="fa fa-trash" title="Delete list"></i></span>
+      <span class="span-pencil hoverSpan"><i class="fa fa-pencil" aria-hidden="true" title="Edit list name"></i></span>
       <a href="/lists/{{email}}/{{name}}">{{name}}</a>
       <form class="hiddenTasks formDeleteList" action="/lists/deleteList?_method=DELETE" method="post">
         <input type="text" name="inputDeleteListName" value="{{name}}" hidden>

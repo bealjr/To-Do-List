@@ -304,7 +304,7 @@ padding: 0;*/
 	background: #f7f7f7;
 }
 
-.sectionLists span {
+.sectionLists .hoverSpan {
   /*001-Box Model*/
   height: 40px;
   /*margin-right: 20px;*/
@@ -320,7 +320,30 @@ padding: 0;*/
   transition: 0.2s linear;
 }
 
-.sectionLists li:hover span {
+.span-done {
+  background: blue;
+  color: white;
+  float: right;
+  /*height: 40px;*/
+  width: 40px;
+  text-align: center;
+}
+
+.divForButton{
+  display: inline-block;
+  float: right;
+  background-color: blue;
+  width: 40px;
+  text-align: center;
+  color: white;
+}
+
+.buttonCompletedTask {
+  border: 0;
+  padding: 0;
+}
+
+.sectionLists li:hover .hoverSpan {
   /*001-Box Model*/
   width: 40px;
   /*002-Positioning*/
@@ -335,6 +358,11 @@ padding: 0;*/
 
 .span-pencil{
   background: green;
+}
+
+
+.spanDeleteTask {
+  margin-right: 20px;
 }
 
 .sectionLists ul li a {

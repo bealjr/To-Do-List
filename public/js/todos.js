@@ -6,7 +6,7 @@ var buttonAddTask = document.getElementById("buttonAddTask")
 
 //ACTIVATE THE SUBMIT BUTTON FOR ADDING A NEW LIST OR NEW TASK IN THE DATABASE ROUTER.POST
 $("input[type = 'text']").keypress(function(){
-	if(event.which === 13 && $(this).text().trim().lenght > 0){
+	if(event.which === 13 && $(this).text().trim().length > 0){
 		clickInputInsert(buttonAddTask);
 	}
 });
@@ -14,15 +14,21 @@ $("input[type = 'text']").keypress(function(){
 $(window).on('load', function() {
 	//CROSS OVER THE TASKS THAT ARE COMPLETED ON THE LOAD OF THE PAGE ROUTER.PUT
 	$(".spanCompletedTask").each(function( index ) {
+		console.log($(this));
 		if ($(this).text() === 'true') {
+			console.log($(this).text());
 			$(this).parent().addClass("completed");
 		}
 	});
 });
 
 //TOGGLE BETWEEN COMPLETE AND INCOMPLETE TASK BY CROSSING IT OVER ROUTER.PUT
-$("#sectionNewList ul").on("click", "li", function(){
+$("#sectionNewList ul").on("click", ".span-check", function(){
 	$(this).toggleClass("completed");
+	console.log($(this).children('.hiddenTasksUpdate').children('button'));
+	console.log($(this));
+	// clickInputInsert($(this).children('.hiddenTasksUpdate').children('button'));
+	event.stopPropagation();
 });
 
 //ACTIVATE THE SUBMIT BUTTON FOR REMOVING A TASK IN THE DATABASE ROUTER.DELETE
@@ -33,6 +39,11 @@ $("ul").on("click", ".span-trash", function(event){
 	});
 	event.stopPropagation();
 });
+
+$(".buttonCompletedTask").on("click", function () {
+	console.log($(this).parent().children(".hiddenTasksUpdate").children('button'));
+	clickInputInsert($(this).parent().children(".hiddenTasksUpdate").children('button'))
+})
 
 //POP UP THE PROMPT FOR THE USER TO EDIT THE NAME OF THE LIST
 $(".span-pencil").on('click', function () {
