@@ -14,13 +14,17 @@ $("input[type = 'text']").keypress(function(){
 $(window).on('load', function() {
 	//CROSS OVER THE TASKS THAT ARE COMPLETED ON THE LOAD OF THE PAGE ROUTER.PUT
 	$(".spanCompletedTask").each(function( index ) {
-		console.log($(this));
+		console.log($(this).text());
 		if ($(this).text() === 'true') {
 			console.log($(this).text());
 			$(this).parent().addClass("completed");
 		}
 	});
 });
+
+
+
+
 
 //TOGGLE BETWEEN COMPLETE AND INCOMPLETE TASK BY CROSSING IT OVER ROUTER.PUT
 $("#sectionNewList ul").on("click", ".span-check", function(){
@@ -30,6 +34,17 @@ $("#sectionNewList ul").on("click", ".span-check", function(){
 	// clickInputInsert($(this).children('.hiddenTasksUpdate').children('button'));
 	event.stopPropagation();
 });
+
+//UPDATE THE COMPLETED TASK
+$(".divForButton").on("click", function () {
+	console.log($(this).parent().children(".hiddenTasksUpdate").children('button'));
+	clickInputInsert($(this).parent().children(".hiddenTasksUpdate").children('button'))
+})
+
+
+
+
+
 
 //ACTIVATE THE SUBMIT BUTTON FOR REMOVING A LIST IN THE DATABASE ROUTER.DELETE
 $("ul").on("click", ".span-trash", function(event){
@@ -48,11 +63,6 @@ $(".span-trash").on("click", function () {
 })
 
 
-//UPDATE THE COMPLETED TASK
-$(".divForButton").on("click", function () {
-	console.log($(this).parent().children(".hiddenTasksUpdate").children('button'));
-	clickInputInsert($(this).parent().children(".hiddenTasksUpdate").children('button'))
-})
 
 //POP UP THE PROMPT FOR THE USER TO EDIT THE NAME OF THE LIST
 $(".span-pencil").on('click', function () {

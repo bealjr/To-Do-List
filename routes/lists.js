@@ -226,35 +226,46 @@ router.post('/addTask', function (req, res, next) {
 
 //UPDATE THE STATUS OF A TASK
 router.put('/updateTask', function(req, res, next){
+  //go to list task with the req.body.id and get the list_task.list_id
+  //run the knex in the task table where id is list_task.list_id
+  //run the if statement
   console.log(req.body);
-  knex('task')
+  knex('list_task')
   .where({id: req.body.id})
   .returning('*')
-  .then(function (tasks) {
-    console.log("This comes from the put", tasks);
-    var task = tasks[0];
-    if (task.completed === true) {
-      console.log("in the if statement");
-      knex('task')
-      .where({id: task.id})
-      .update({completed: false})
-      .returning('*')
-      .then(function (completedTasks) {
-        console.log("variable reqParams", reqParams);
-        res.redirect('/lists/' + req.session.user + "/" + reqParams.listName);
-      })
-    }
-    else {
-      knex('task')
-      .where({id: task.id})
-      .update({completed: true})
-      .returning('*')
-      .then(function (completedTasks) {
-        console.log("variable reqParams", reqParams);
-        res.redirect('/lists/' + req.session.user + "/" + reqParams.listName);
-      })
-    }
-  })
+  .then(function (listTasks) {
+    console.log("This comes from the put", listTasks);
+    var listTask = listTasks[0];
+    knex("task")
+    .select()
+    .where({id: listTask.task_id})
+    .returning('*')
+    .then(function(tasks) {
+      var task = tasks[0];
+      if (task.completed === true) {
+        console.log("in the if statement");
+        knex('task')
+        .where({id: task.id})
+        .update({completed: false})
+        .returning('*')
+        .then(function (completedTasks) {
+          console.log("variable reqParams", reqParams);
+          res.redirect('/lists/' + req.session.user + "/" + reqParams.listName);
+        })
+      }
+      else {
+        console.log("in the else statement");
+        knex('task')
+        .where({id: task.id})
+        .update({completed: true})
+        .returning('*')
+        .then(function (completedTasks) {
+          console.log("variable reqParams", reqParams);
+          res.redirect('/lists/' + req.session.user + "/" + reqParams.listName);
+        });
+      }
+    });
+  });
 });
 
 
@@ -262,28 +273,25 @@ router.put('/updateTask', function(req, res, next){
 //DELETE THE TASK
 var listIdFromListTasks;
 router.delete('/deleteTask', function (req, res, next) {
-  console.log("This is the req.body from the deleteTask", req.body);
-  console.log(req.params);
-  console.log(reqParams);
+
 
   knex('list_task')
   .where('task_id', req.body.task_id)
   .returning('*')
   .then(function (listTasks) {
     var listTask = listTasks[0];
-    console.log("ListTask is here", listTask);
     listIdFromListTasks = listTask.list_id;
+
   })
   .then(function () {
     knex('list_task')
     .where('task_id', req.body.task_id)
     .del()
   })
-  .then(function (/*listIdFromListTasks*/) {
+  .then(function () {
     knex('task')
     .where('id', req.body.task_id)
     .del()
-    // .returning(listIdFromListTasks)
     .then(function (listIdFromListTasks) {
       console.log("***********************", listIdFromListTasks);
       knex
@@ -295,14 +303,7 @@ router.delete('/deleteTask', function (req, res, next) {
       .where({'list.id': listIdFromListTasks})
       .returning('*')
       .then(function (listedTasks) {
-        console.log(listedTasks);
-        console.log(listedTasks.todo);
-        res.render('list', {
-          name: reqParams.listName,
-          listedTasks: listedTasks,
-          list_id: listIdFromListTasks,
-          user: req.session.user || 'guest'
-        });
+        res.redirect('/lists/' + req.session.user + "/" + reqParams.listName);
       });
       console.log("the entry was deleted");
     })
