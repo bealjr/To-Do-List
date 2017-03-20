@@ -10,7 +10,7 @@ ROUTES FOR LISTS
 --------------------------
 */
 
-/*Display all the lists of the user*/
+/*GET LISTS OF THE USER*/
 router.get('/:email', function(req, res, next) {
   console.log(req.params);
   console.log(req.session.user);
@@ -77,59 +77,48 @@ router.delete('/deleteList', function (req, res, next) {
 })
 
 
+
+
+
+
+
+
 /*
 --------------------------
 ROUTES FOR TASKS
 --------------------------
 */
 
-
-//DISPLAY A PARTICULAR LIST'S TASK
+// //DISPLAY A PARTICULAR LIST'S TASK
 router.get('/:email/:listName', function (req, res, next) {
   console.log(req.params);
-  // knex
-  // .select('list.name', 'list_task.list_id', 'list_task.task_id', 'list_task.id', 'task.todo', 'users.email', 'task.completed')
-  // .table('list')
-  // .innerJoin('list_task', 'list_task.list_id', 'list.id')
-  // .innerJoin('task', 'task.id', 'list_task.task_id')
-  // .innerJoin('users', 'users.id', 'list.user_id')
-  // .where({name: req.params.listName})
-  // .returning('*')
-  // .then(function (listedTasks) {
-  //   console.log(listedTasks);
-  //   console.log(listedTasks.todo);
-  //   res.render('list', {
-  //     listName: req.params.listName,
-  //     listedTasks: listedTasks,
-  //     list_id: listedTasks[0].list_id,
-  //     user: req.session.user || 'guest'
-  //   })
-  // })
+  knex
+  .select('list.name', 'list_task.list_id', 'list_task.task_id', 'list_task.id', 'task.todo', 'users.email', 'task.completed')
+  .table('list')
+  .innerJoin('list_task', 'list_task.list_id', 'list.id')
+  .innerJoin('task', 'task.id', 'list_task.task_id')
+  .innerJoin('users', 'users.id', 'list.user_id')
+  .where({name: req.params.listName})
+  .returning('*')
+  .then(function (listedTasks) {
+    if (listedTasks.length !== 0) {
+      console.log(listedTasks);
+      console.log(listedTasks.todo);
+      res.render('list', {
+        listName: req.params.listName,
+        listedTasks: listedTasks,
+        list_id: listedTasks[0].list_id,
+        user: req.session.user || 'guest'
+      })
+    }
+    else {
+      res.render('list', {
+        listName: req.params.listName,
+        user: req.session.user
+      })
+    }
+  })
 });
-
-
-// //DISPLAY A PARTICULAR LIST'S TASK
-// router.get('/:email/:listName', function (req, res, next) {
-//   console.log(req.params);
-//   knex
-//   .select('list.name', 'list_task.list_id', 'list_task.task_id', 'list_task.id', 'task.todo', 'users.email', 'task.completed')
-//   .table('list')
-//   .innerJoin('list_task', 'list_task.list_id', 'list.id')
-//   .innerJoin('task', 'task.id', 'list_task.task_id')
-//   .innerJoin('users', 'users.id', 'list.user_id')
-//   .where({name: req.params.listName})
-//   .returning('*')
-//   .then(function (listedTasks) {
-//     console.log(listedTasks);
-//     console.log(listedTasks.todo);
-//     res.render('list', {
-//       listName: req.params.listName,
-//       listedTasks: listedTasks,
-//       list_id: listedTasks[0].list_id,
-//       user: req.session.user || 'guest'
-//     })
-//   })
-// });
 
 
 //POST A NEW TASK IN LIST

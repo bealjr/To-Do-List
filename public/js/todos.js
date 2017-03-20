@@ -26,13 +26,24 @@ $("#sectionNewList ul").on("click", "li", function(){
 });
 
 //ACTIVATE THE SUBMIT BUTTON FOR REMOVING A TASK IN THE DATABASE ROUTER.DELETE
-$("ul").on("click", "span", function(event){
+$("ul").on("click", ".span-trash", function(event){
 	clickInputInsert($(this).parent().children(".hiddenTasks").children("button"));
 	$(this).parent().fadeOut(500, function(){
 		$(this).remove();
 	});
 	event.stopPropagation();
 });
+
+//POP UP THE PROMPT FOR THE USER TO EDIT THE NAME OF THE LIST
+var editThis;
+$(".span-pencil").on('click', function () {
+	editThis = $(this).parent().children(".formEditListName").children('input');
+	console.log(editThis);
+	var anchorText = $(this).parent().children("a")
+	var variable2 = $(this).parent().children("a");
+	console.log(variable2);
+	runEditPrompt(anchorText, editThis);
+})
 
 //FADE PLUS ICON ON CLICK
 $(".fa-plus").click(function(){
@@ -44,4 +55,17 @@ $(".fa-plus").click(function(){
 //ACTIVATE INPUT TYPE=FILE TAGS BY CLICKING AT DIFFERENT BUTTONS
 function clickInputInsert(inputTag){
   inputTag.click();
+}
+
+function runEditPrompt(listTextValue, inputEditListName) {
+	var newListName = prompt('Update the list\'s name', listTextValue);
+	if (newListName.trim() !== "" || newListName.trim() !== listTextValue) {
+		editThis.attr('value', newListName)
+		console.log(listTextValue.text(), ".text")
+		console.log(listTextValue.html(), ".html")
+		listTextValue.text(newListName)
+		// $(this).parent().children(".formEditListName").children('input').attr('value', newListName);
+		// console.log(editThis);
+		// console.log(editThis.value);
+	}
 }

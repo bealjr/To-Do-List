@@ -307,7 +307,7 @@ padding: 0;*/
 .sectionLists span {
   /*001-Box Model*/
   height: 40px;
-  margin-right: 20px;
+  /*margin-right: 20px;*/
   width: 0;
   /*002-Positioning*/
   display: inline-block;
@@ -315,7 +315,6 @@ padding: 0;*/
   text-align: center;
   color: white;
   /*004-Backgrounds*/
-	background: #e74c3c;
 	opacity: 0;
   /*005-Animation*/
   transition: 0.2s linear;
@@ -328,7 +327,22 @@ padding: 0;*/
   /*003-Typography*/
   /*004-Backgrounds*/
 	opacity: 1.0;
+}
 
+.span-trash{
+  background: #e74c3c;
+}
+
+.span-pencil{
+  background: green;
+}
+
+.sectionLists ul li a {
+  margin-left: 15px;
+}
+
+.fa-pencil {
+  /*background: green;*/
 }
 
 .sectionLists input {

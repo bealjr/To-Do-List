@@ -22,7 +22,7 @@
   <ul>
     {{#each listedTasks}}
     <li>
-      <span><i class="fa fa-trash"></i></span>{{todo}} {{listName}}
+      <span><i class="fa fa-trash" title="Delete task"></i></span>{{todo}} {{listName}}
       <p class="spanCompletedTask" hidden>{{completed}}</p>
       <form class="hiddenTasks" action="/lists/deleteTask?_method=DELETE" method="post">
         <input type="text" name="task_id" value="{{task_id}}" hidden="hidden">
