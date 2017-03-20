@@ -1,14 +1,3 @@
-
-
-<div class="classOfLists">
-Before the name:  {{name}} {{id}}<br>
-  {{#each listedTasks}}
-
-  {{todo}} {{completed}} {{id}}
-  {{/each}}
-</div>
-
-
 <section class="sectionLists" id="sectionNewList">
   <h1>{{name}}<i class="fa fa-plus"></i></h1>
   <!-- <input type="text" name="title" value="{{listName}}" placeholder="{{listName}}" required><br> -->
@@ -25,12 +14,12 @@ Before the name:  {{name}} {{id}}<br>
     <li>
       <span class="span-trash spanDeleteTask hoverSpan"><i class="fa fa-trash" title="Delete list"></i></span>
       {{todo}}
-      <button type="button" name="button" class="buttonCompletedTask"><span class="span-done"><i class="fa fa-check" aria-hidden="true"></i></span></button>
+      <!-- <button type="button" name="button" class="buttonCompletedTask"><span class="span-done"><i class="fa fa-check" aria-hidden="true"></i></span></button> -->
       <div class="divForButton">
-        A
+        <span class="span-done"><i class="fa fa-check" aria-hidden="true"></i></span>
       </div>
       <p class="spanCompletedTask" hidden>{{completed}}</p>
-      <form class="hiddenTasks" action="/lists/deleteTask?_method=DELETE" method="post">
+      <form class="hiddenTasksDelete" action="/lists/deleteTask?_method=DELETE" method="post">
         <input type="text" name="task_id" value="{{task_id}}" hidden="hidden">
         <button type="submit" name="deleteButton" class="deleteButton" hidden="hidden"></button>
       </form>

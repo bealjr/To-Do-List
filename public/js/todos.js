@@ -31,7 +31,7 @@ $("#sectionNewList ul").on("click", ".span-check", function(){
 	event.stopPropagation();
 });
 
-//ACTIVATE THE SUBMIT BUTTON FOR REMOVING A TASK IN THE DATABASE ROUTER.DELETE
+//ACTIVATE THE SUBMIT BUTTON FOR REMOVING A LIST IN THE DATABASE ROUTER.DELETE
 $("ul").on("click", ".span-trash", function(event){
 	clickInputInsert($(this).parent().children(".formDeleteList").children(".buttonDeleteList"));
 	$(this).parent().fadeOut(500, function(){
@@ -40,7 +40,16 @@ $("ul").on("click", ".span-trash", function(event){
 	event.stopPropagation();
 });
 
-$(".buttonCompletedTask").on("click", function () {
+
+//ACTIVATE THE SUBMIT BUTTON FOR REMOVING A TASK IN THE DATABASE ROUTER.DELETE
+$(".span-trash").on("click", function () {
+	console.log($(this).parent().children(".hiddenTasksDelete").children("button"));
+	clickInputInsert($(this).parent().children(".hiddenTasksDelete").children("button"))
+})
+
+
+//UPDATE THE COMPLETED TASK
+$(".divForButton").on("click", function () {
 	console.log($(this).parent().children(".hiddenTasksUpdate").children('button'));
 	clickInputInsert($(this).parent().children(".hiddenTasksUpdate").children('button'))
 })

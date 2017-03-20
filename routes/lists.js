@@ -209,18 +209,15 @@ router.put('/updateTask', function(req, res, next){
     }
   })
 });
-var listIdFromListTasks;
-
-
-
-
 
 
 
 //DELETE THE TASK
+var listIdFromListTasks;
 router.delete('/deleteTask', function (req, res, next) {
   console.log("This is the req.body from the deleteTask", req.body);
   console.log(req.params);
+  console.log(reqParams);
 
   knex('list_task')
   .where('task_id', req.body.task_id)
@@ -257,9 +254,9 @@ router.delete('/deleteTask', function (req, res, next) {
         console.log(listedTasks);
         console.log(listedTasks.todo);
         res.render('list', {
-          listName: req.params.listName,
+          name: reqParams.listName,
           listedTasks: listedTasks,
-          list_id: listedTasks[0].list_id,
+          list_id: listIdFromListTasks,
           user: req.session.user || 'guest'
         });
       });
