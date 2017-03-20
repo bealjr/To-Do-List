@@ -102,7 +102,7 @@ ROUTES FOR TASKS
 
 var reqParams;
 var recentListId;
-// //DISPLAY A PARTICULAR LIST'S TASKS
+// ROUTER.GET - DISPLAY A PARTICULAR LIST'S TASKS
 router.get('/:email/:listName', function (req, res, next) {
   console.log(req.params);
   reqParams = req.params;
@@ -156,24 +156,71 @@ router.get('/:email/:listName', function (req, res, next) {
 
 //POST A NEW TASK IN LIST
 router.post('/addTask', function (req, res, next) {
-  knex('task')
-  .insert({
-    todo: req.body.todo,
-    completed: false
-  })
-  .returning('*')
-  .then(function(insertedTasks) {
-    var insertedTask = insertedTasks[0]
-    knex('list_task')
-    .insert({
-      task_id: insertedTask.id,
-      list_id: req.body.list_id
+  console.log(req.body);
+  if (req.body.todo.trim() === "") {
+    res.render('error', {
+      message: "Invalid entry",
+      status: "403",
+      description: "You need to enter some text in order for a new task to be saved in the database",
+      user: req.session.user
     })
-    .returning('*')
-    .then(function() {
-      res.redirect('/lists/' + req.body.email + "/" + reqParams.listName);
-    });
-  });
+  }
+  else {
+    if (!req.body.list_id) {
+      console.log("in the if statement. Need to knex it");
+      knex('list')
+      .select()
+      .where({name: reqParams.listName})
+      .returning('')
+      .then(function(lists) {
+        console.log(lists);
+        var list = lists[0];
+        recentListId = list.id;
+        knex('task')
+        .insert({
+          todo: req.body.todo,
+          completed: false
+        })
+        .returning('*')
+        .then(function(insertedTasks) {
+          var insertedTask = insertedTasks[0];
+          knex('list_task')
+          .insert({
+            task_id: insertedTask.id,
+            list_id: recentListId
+          })
+          .returning('*')
+          .then(function () {
+            res.redirect('/lists/' + req.body.email + "/" + reqParams.listName);
+          });
+        });
+      });
+    }
+    else {
+      console.log("in tbe else statement");
+      knex('task')
+      .insert({
+        todo: req.body.todo,
+        completed: false
+      })
+      .returning('*')
+      .then(function(insertedTasks) {
+        var insertedTask = insertedTasks[0]
+        console.log(req.body);
+        console.log("req.body.list_id:", req.body.list_id);
+        console.log("recentListId", recentListId);
+        knex('list_task')
+        .insert({
+          task_id: insertedTask.id,
+          list_id: req.body.list_id
+        })
+        .returning('*')
+        .then(function() {
+          res.redirect('/lists/' + req.body.email + "/" + reqParams.listName);
+        });
+      });
+    }
+  }
 });
 
 
@@ -226,16 +273,13 @@ router.delete('/deleteTask', function (req, res, next) {
     var listTask = listTasks[0];
     console.log("ListTask is here", listTask);
     listIdFromListTasks = listTask.list_id;
-    // return listIdFromListTasks;
   })
-  .then(function (/*listIdFromListTasks*/) {
+  .then(function () {
     knex('list_task')
     .where('task_id', req.body.task_id)
     .del()
-    // return(listIdFromListTasks);
   })
   .then(function (/*listIdFromListTasks*/) {
-    // console.log(listIdFromListTasks);
     knex('task')
     .where('id', req.body.task_id)
     .del()
