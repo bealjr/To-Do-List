@@ -77,7 +77,17 @@ router.delete('/deleteList', function (req, res, next) {
 })
 
 
+router.put('/editListName', function (req, res, next) {
+  console.log(req.body);
+  knex('list')
+  .select()
+  .where({name: req.body.originalListName})
+  .update({name: req.body.inputEditListName})
+  .then(function () {
+    res.status(200);
+  })
 
+})
 
 
 

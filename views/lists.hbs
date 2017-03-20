@@ -13,14 +13,15 @@ We are in the users lists page
       <span class="span-trash"><i class="fa fa-trash" title="Delete list"></i></span>
       <span class="span-pencil"><i class="fa fa-pencil" aria-hidden="true" title="Edit list name"></i></span>
       <a href="/lists/{{email}}/{{name}}">{{name}}</a>
-      <form class="hiddenTasks" action="/lists/deleteList?_method=DELETE" method="post">
+      <form class="hiddenTasks formDeleteList" action="/lists/deleteList?_method=DELETE" method="post">
         <input type="text" name="inputDeleteListName" value="{{name}}" hidden>
-        <button type="submit" name="buttonDeleteList" class="deleteButton" id="buttonDeleteList" hidden>Delete</button>
+        <button type="submit" name="buttonDeleteList" class="buttonDeleteList" id="buttonDeleteList" hidden>Delete</button>
       </form>
 
-      <form class="hiddenTasks formEditListName" action="lists/editListName?_method=PUT" method="post">
-        <input type="text" name="inputEditListName" value="{{name}}" class="inputEditListName">
-        <button type="submit" name="buttonEditListName" id="buttonEditListName"></button>
+      <form class="hiddenTasks formEditListName" action="/lists/editListName?_method=PUT" method="post">
+        <input type="text" name="originalListName" value="{{name}}" class="originalListName" hidden>
+        <input type="text" name="inputEditListName" value="{{name}}" class="inputEditListName" hidden>
+        <button type="submit" name="buttonEditListName" class="buttonEditListName" id="buttonEditListName" hidden></button>
       </form>
     </li>
     {{/each}}

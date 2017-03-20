@@ -27,7 +27,7 @@ $("#sectionNewList ul").on("click", "li", function(){
 
 //ACTIVATE THE SUBMIT BUTTON FOR REMOVING A TASK IN THE DATABASE ROUTER.DELETE
 $("ul").on("click", ".span-trash", function(event){
-	clickInputInsert($(this).parent().children(".hiddenTasks").children("button"));
+	clickInputInsert($(this).parent().children(".formDeleteList").children(".buttonDeleteList"));
 	$(this).parent().fadeOut(500, function(){
 		$(this).remove();
 	});
@@ -35,14 +35,11 @@ $("ul").on("click", ".span-trash", function(event){
 });
 
 //POP UP THE PROMPT FOR THE USER TO EDIT THE NAME OF THE LIST
-var editThis;
 $(".span-pencil").on('click', function () {
-	editThis = $(this).parent().children(".formEditListName").children('input');
-	console.log(editThis);
-	var anchorText = $(this).parent().children("a")
-	var variable2 = $(this).parent().children("a");
-	console.log(variable2);
-	runEditPrompt(anchorText, editThis);
+	var editThis = $(this).parent().children(".formEditListName").children('.inputEditListName');
+	var anchorText = $(this).parent().children("a");
+	var buttonUpdate = $(this).parent().children('.formEditListName').children('button');
+	runEditPrompt(anchorText, editThis, buttonUpdate);
 })
 
 //FADE PLUS ICON ON CLICK
@@ -57,15 +54,15 @@ function clickInputInsert(inputTag){
   inputTag.click();
 }
 
-function runEditPrompt(listTextValue, inputEditListName) {
-	var newListName = prompt('Update the list\'s name', listTextValue);
-	if (newListName.trim() !== "" || newListName.trim() !== listTextValue) {
-		editThis.attr('value', newListName)
-		console.log(listTextValue.text(), ".text")
-		console.log(listTextValue.html(), ".html")
-		listTextValue.text(newListName)
-		// $(this).parent().children(".formEditListName").children('input').attr('value', newListName);
-		// console.log(editThis);
-		// console.log(editThis.value);
+//PROMPT FOR CHANGING THE VALUE OF THE LIST AND ACTIVATING SUBMIT BUTTON
+function runEditPrompt(listTextValue, inputEditListName, buttonUpdate) {
+	var newListName = prompt('Update the list\'s name', listTextValue.text());
+	if (newListName.trim() !== "" || newListName.trim() !== listTextValue.text()) {
+		inputEditListName.attr('value', newListName);
+		listTextValue.text(newListName);
+
+		clickInputInsert(buttonUpdate);
+
+
 	}
 }
