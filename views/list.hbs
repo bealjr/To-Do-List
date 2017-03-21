@@ -12,10 +12,10 @@
   <ul>
     {{#each listedTasks}}
     <li>
-      <span class="span-trash spanDeleteTask hoverSpan"><i class="fa fa-trash" title="Delete list"></i></span>
+      <span class="span-trash spanDeleteTask hoverSpan"><i class="fa fa-trash" title="Delete task"></i></span>
       {{todo}}
       <!-- <button type="button" name="button" class="buttonCompletedTask"><span class="span-done"><i class="fa fa-check" aria-hidden="true"></i></span></button> -->
-      <div class="divForButton">
+      <div class="divForButton" title="Mark task as complete">
         <span class="span-done"><i class="fa fa-check" aria-hidden="true"></i></span>
       </div>
       <p class="spanCompletedTask" hidden>{{completed}}</p>

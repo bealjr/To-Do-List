@@ -3,12 +3,9 @@ body {
   /*002-Positioning*/
   /*003-Typography*/
   font: 16px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: white;
+  color: #1b512d;
   /*004-Backgrounds*/
-  background: #004FF9; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #004FF9, #FFF94C);
-  background: -o-linear-gradient(right, #004FF9, #FFF94C);
-  background: linear-gradient(to left, #004FF9, #FFF94C); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #73e2a7; /* fallback for old browsers */
 }
 
 #container {
@@ -25,7 +22,7 @@ body {
   /*002-Positioning*/
   /*003-Typography*/
   /*004-Backgrounds*/
-  background-color: #2980b9;
+  background-color: #1b512d;
 }
 
 #footerDiv {
@@ -67,7 +64,7 @@ header {
   /*line-height: 150px;*/
   text-align: center;
   /*004-Backgrounds*/
-  background-color: #2980b9;
+  background-color: #1b512d;
 }
 
 #sectionLoginSignup {
@@ -91,7 +88,6 @@ form table {
   /*002-Positioning*/
   /*003-Typography*/
   font-size: 18px;
-  color: white;
   /*004-Backgrounds*/
 }
 
@@ -113,21 +109,22 @@ form input {
 
 button {
   /*001-Box Model*/
-  border: 2px solid #1c567d;
+  border: 2px solid #1b512d;
   border-radius: 5px;
   /*002-Positioning*/
   padding: 5px;
   /*003-Typography*/
   font-size: 18px;
   font-weight: bold;
-  color: #1c567d;
+  color: #1b512d;
   /*004-Backgrounds*/
-  background-color: white;
+  background-color: #def4c6;
 }
 
 button:hover {
-  background-color: #2980b9;
-  color: white;
+  background-color: #1b512d;
+  color: #def4c6;
+  cursor: pointer;
 }
 
 table td {
@@ -173,14 +170,14 @@ footer {
   text-align: center;
   line-height: 100px;
   /*004-Backgrounds*/
-  background-color: #2980b9;
+  background-color: #1b512d;
 }
 
 h1 {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
-  color: white;
+  color: #def4c6;
   font-size: 44px;
   font-weight: 500;
   /*004-Backgrounds*/
@@ -190,8 +187,13 @@ h2 {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
-  color: white;
+  color: #def4c6;
   font-size: 32px;
+  text-shadow:
+  -1px -1px 0 #1b512d,
+  1px -1px 0 #1b512d,
+  -1px 1px 0 #1b512d,
+  1px 1px 0 #1b512d;
   /*004-Backgrounds*/
 }
 
@@ -199,9 +201,14 @@ h3 {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
-  color: white;
+  color: #def4c6;
   font-size: 28px;
   font-weight: bold;
+  text-shadow:
+  -1px -1px 0 #1b512d,
+  1px -1px 0 #1b512d,
+  -1px 1px 0 #1b512d,
+  1px 1px 0 #1b512d;
   /*004-Backgrounds*/
 }
 
@@ -209,16 +216,22 @@ h4 {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
-  color: white;
+  color: #def4c6;
   font-size: 24px;
+  text-shadow:
+   -1px -1px 0 #1b512d,
+    1px -1px 0 #1b512d,
+    -1px 1px 0 #1b512d,
+     1px 1px 0 #1b512d;
   /*004-Backgrounds*/
+
 }
 
 h5 {
   /*001-Box Model*/
   /*002-Positioning*/
   /*003-Typography*/
-  color: white;
+  color: #def4c6;
   font-size: 20px;
   /*004-Backgrounds*/
 }
@@ -228,12 +241,27 @@ a {
   /*002-Positioning*/
   /*003-Typography*/
   text-decoration: none;
-  color: white;
+  color: #def4c6;
   /*004-Backgrounds*/
 }
 
+a:hover {
+  color: #1b512d;
+  text-shadow:
+  -1px -1px 0 #def46c,
+   1px -1px 0 #def46c,
+   -1px 1px 0 #def46c,
+    1px 1px 0 #def46c;
+}
+
 a h1:hover {
-  color: #1c567d;
+  color: #1b512d;
+  cursor: pointer;
+  text-shadow:
+  -1px -1px 0 #def46c,
+   1px -1px 0 #def46c,
+   -1px 1px 0 #def46c,
+    1px 1px 0 #def46c;
 }
 
 #buttonAddTask, #buttonLogout, #buttonDeleteAccount {
@@ -262,7 +290,7 @@ NEW LIST SECTION
   /*003-Typography*/
   /*004-Backgrounds*/
   box-shadow: 0 0 3px rgba(0,0,0, 0.1);
-  background: #f7f7f7;
+  background: #1c7c54;
 }
 
 .sectionLists h1 {
@@ -275,7 +303,6 @@ NEW LIST SECTION
   font-weight: normal;
   text-transform: uppercase;
   /*004-Backgrounds*/
-	background: #2980b9;
 }
 
 .sectionLists ul {
@@ -313,16 +340,19 @@ padding: 0;*/
   display: inline-block;
   /*003-Typography*/
   text-align: center;
-  color: white;
+  color: #def4c6;
   /*004-Backgrounds*/
 	opacity: 0;
   /*005-Animation*/
   transition: 0.2s linear;
 }
 
+.hoverSpan:hover {
+  cursor: pointer;
+}
+
 .span-done {
-  background: blue;
-  color: white;
+  color: #def4c6;
   float: right;
   /*height: 40px;*/
   width: 40px;
@@ -332,10 +362,15 @@ padding: 0;*/
 .divForButton{
   display: inline-block;
   float: right;
-  background-color: blue;
+  background-color: #1c7c54;
   width: 40px;
   text-align: center;
-  color: white;
+  color: #def4c6;
+}
+
+.divForButton:hover {
+  cursor: pointer;
+  background-color: #1b512d;
 }
 
 .buttonCompletedTask {
@@ -365,6 +400,10 @@ padding: 0;*/
   margin-right: 20px;
 }
 
+.spanDeleteTask:hover {
+  cursor: pointer;
+}
+
 .sectionLists ul li a {
   margin-left: 15px;
 }
@@ -381,7 +420,7 @@ padding: 0;*/
   /*002-Positioning*/
   /*003-Typography*/
   font-size: 18px;
-  color: #2980b9;
+  color: #1b512d;
   /*004-Backgrounds*/
   background-color: #f7f7f7;
 	/*box-sizing: border-box;*/
@@ -390,19 +429,20 @@ padding: 0;*/
 .sectionLists input:focus{
   /*001-Box Model*/
   /*002-Positioning*/
-  border: 3px solid #2980b9;
+  border: 3px solid #b1cf5f;
   /*003-Typography*/
   /*004-Backgrounds*/
-	background: white;
+	background: #def4c6;
 	outline: none;
 }
 
 .sectionLists a {
-  color: #666;
+  color: #1b512d;
 }
 
 .sectionLists a:hover {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .fa-plus{

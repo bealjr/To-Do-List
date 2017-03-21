@@ -112,7 +112,7 @@ router.get('/logout', (req, res, next) => {
   console.log(req.session);
   req.session.destroy(function (err) {
       res.render('index', {
-        title: 'Jeremy\'s lists',
+        title: 'listMe.xyz',
         user: "guest"
       });
   });
@@ -125,7 +125,7 @@ router.get('/logout', (req, res, next) => {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {
-    title: 'Jeremy\'s lists',
+    title: 'listMe.xyz',
     user: req.session.user || "guest"
   });
 });
