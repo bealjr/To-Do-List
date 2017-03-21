@@ -61,7 +61,6 @@ header {
   /*002-Positioning*/
   margin: auto;
   /*003-Typography*/
-  /*line-height: 150px;*/
   text-align: center;
   /*004-Backgrounds*/
   background-color: #1b512d;
@@ -385,6 +384,37 @@ padding: 0;*/
   /*003-Typography*/
   /*004-Backgrounds*/
 	opacity: 1.0;
+}
+
+.bodyBackgroundImage{
+  background-image: url("https://unsplash.it/1400/1050/?random");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.sectionContentFrame{
+  /*001-Box Model*/
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  /*002-Positioning*/
+  /*003-Typography*/
+  /*004-Backgrounds*/
+  background-color: rgba(255,255,255, .5);
+}
+
+.sectionTextJustification {
+  text-align: justify;
+}
+
+.sectionTextJustification ul{
+  list-style-type: circle;
+  margin-left: 20px;
+}
+
+.sectionTextJustification a{
+  
 }
 
 .span-trash{

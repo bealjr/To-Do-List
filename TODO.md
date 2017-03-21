@@ -25,3 +25,6 @@
 * [] DELETE in tasks list
 * [] fix creation of a task
 * [] fix the fade out in the todos.js
+* [] Add confirmation when someone wants to delete a list
+* [] Create "about" page
+* [] See if you can do a flickr api call
