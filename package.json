@@ -20,5 +20,6 @@
     "serve-favicon": "~2.3.0",
     "sqlite3": "^3.1.8"
   },
-  "author": "PARASKEVAS APOSTOLOPOULOS, JEREMY BEAL"
+  "author": "PARASKEVAS APOSTOLOPOULOS, JEREMY BEAL",
+  "heroku-postbuild": "knex migrate:latest --env production"
 }
