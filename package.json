@@ -1,5 +1,5 @@
 {
-  "name": "ToDoListProject",
+  "name": "listMe.xyz",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -19,5 +19,6 @@
     "pg": "^6.1.4",
     "serve-favicon": "~2.3.0",
     "sqlite3": "^3.1.8"
-  }
+  },
+  "author": "PARASKEVAS APOSTOLOPOULOS, JEREMY BEAL"
 }
