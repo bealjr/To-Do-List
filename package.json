@@ -7,6 +7,9 @@
     "knex": "knex",
     "heroku-postbuild": "knex migrate:latest --env production"
   },
+  "engines": {
+  "node": "6.5.0"
+},
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "~1.15.1",
