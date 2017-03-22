@@ -1,5 +1,8 @@
 body {
   /*001-Box Model*/
+  margin:0;
+	padding:0;
+  min-height: 100%;
   /*002-Positioning*/
   /*003-Typography*/
   font: 16px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -12,7 +15,6 @@ body {
   /*001-Box Model*/
   min-height: 100%;
   /*002-Positioning*/
-  position: relative;
   /*003-Typography*/
   /*004-Backgrounds*/
 }
@@ -28,6 +30,7 @@ body {
 #footerDiv {
   /*001-Box Model*/
   width: 100%;
+  height: 100px;
   /*002-Positioning*/
   position: absolute;
   bottom: 0;
@@ -40,23 +43,23 @@ body {
   /*001-Box Model*/
   width: 33%;
   margin: auto;
-  height: 150px;
+  height: 100px;
   /*002-Positioning*/
   display: inline-block;
   vertical-align: middle;
   /*003-Typography*/
-  line-height: 150px;
+  line-height: 100px;
   /*004-Backgrounds*/
 }
 
 #headerFirstThird h5 {
   line-height: 20px;
-  padding-top: 55px;
+  padding-top: 30px;
 }
 
 header {
   /*001-Box Model*/
-  height: 150px;
+  height: 100px;
   max-width: 1400px;
   /*002-Positioning*/
   margin: auto;
@@ -144,14 +147,25 @@ nav {
  /*003-Typography*/
  font-size: 20px;
  line-height: 25px;
- padding: 25px;
+ padding: 10px;
+  /*004-Backgrounds*/
+}
+
+.mainDiv {
+  /*001-Box Model*/
+  width: 100%;
+  padding: 10px 0 100px 0;
+  /*002-Positioning*/
+  margin: auto;
+  /*003-Typography*/
+  text-align: center;
   /*004-Backgrounds*/
 }
 
 main {
   /*001-Box Model*/
   max-width: 1400px;
-  padding: 10px 0 100px 0;
+  /*padding: 10px 0 100px 0;*/
   /*002-Positioning*/
   margin: auto;
   /*003-Typography*/
@@ -161,6 +175,7 @@ main {
 
 footer {
   /*001-Box Model*/
+  width: 100%;
   height: 100px;
   max-width: 1400px;
   /*002-Positioning*/
@@ -396,7 +411,7 @@ padding: 0;*/
 .sectionContentFrame{
   /*001-Box Model*/
   width: 80%;
-  margin: auto;
+  margin: 0 auto 10px auto;
   padding: 10px;
   /*002-Positioning*/
   /*003-Typography*/
@@ -413,8 +428,23 @@ padding: 0;*/
   margin-left: 20px;
 }
 
+.sectionTextJustification a:hover{
+  color: #1b512d;
+  text-shadow:
+  -1px -1px 0 #def46c,
+   1px -1px 0 #def46c,
+   -1px 1px 0 #def46c,
+    1px 1px 0 #def46c;
+    cursor: pointer;
+}
+
 .sectionTextJustification a{
-  
+  color: #def46c;
+  text-shadow:
+  -1px -1px 0 #1b512d,
+   1px -1px 0 #1b512d,
+   -1px 1px 0 #1b512d,
+    1px 1px 0 #1b512d;
 }
 
 .span-trash{
@@ -453,7 +483,6 @@ padding: 0;*/
   color: #1b512d;
   /*004-Backgrounds*/
   background-color: #f7f7f7;
-	/*box-sizing: border-box;*/
 }
 
 .sectionLists input:focus{

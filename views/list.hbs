@@ -1,12 +1,10 @@
 <section class="sectionLists" id="sectionNewList">
   <h1>{{name}}<i class="fa fa-plus"></i></h1>
-  <!-- <input type="text" name="title" value="{{listName}}" placeholder="{{listName}}" required><br> -->
   <form class="" action="/lists/addTask" method="post">
-    <!-- <input type="text" name="list_id" value="{{list_id}}" hidden="hidden"> -->
     <input type="text" name="email" value="{{user}}" hidden="hidden">
     <input type="text" name="listName" value="{{name}}" hidden="hidden">
     <input type="text" name="list_id" value="{{id}}" hidden>
-    <input type="text" name="todo" placeholder= "Add new task" id="inputAddListTask">
+    <input type="text" name="todo" placeholder= "Add new task" id="inputAddListTask" autofocus>
     <button type="submit" name="buttonAddTask" id="buttonAddTask">submit</button>
   </form>
   <ul>
