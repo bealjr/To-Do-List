@@ -4,6 +4,7 @@ body {
 	padding:0;
   min-height: 100%;
   /*002-Positioning*/
+  position: relative;
   /*003-Typography*/
   font: 16px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
   color: #1b512d;
